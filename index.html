@@ -1,0 +1,1471 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>20 Day ₹5L Launch Command Center</title>
+
+<style>
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    background: #0b0d12;
+    color: #f4f4f5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1250px;
+    margin: auto;
+    padding: 25px;
+}
+
+/* HEADER */
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: 800;
+}
+
+.logo span {
+    color: #22c55e;
+}
+
+.mission {
+    font-size: 13px;
+    color: #9ca3af;
+    margin-top: 5px;
+}
+
+button {
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    padding: 10px 15px;
+    font-weight: 700;
+}
+
+/* CARDS */
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+}
+
+.card {
+    background: #151821;
+    border: 1px solid #242936;
+    border-radius: 14px;
+    padding: 20px;
+}
+
+.card-title {
+    color: #9ca3af;
+    font-size: 13px;
+    margin-bottom: 10px;
+}
+
+.big-number {
+    font-size: 28px;
+    font-weight: 800;
+}
+
+.green {
+    color: #22c55e;
+}
+
+.red {
+    color: #ef4444;
+}
+
+.yellow {
+    color: #facc15;
+}
+
+.progress {
+    height: 9px;
+    background: #292e39;
+    border-radius: 20px;
+    overflow: hidden;
+    margin-top: 12px;
+}
+
+.progress-bar {
+    height: 100%;
+    background: #22c55e;
+    width: 0%;
+    transition: 0.3s;
+}
+
+/* MAIN */
+
+.main-grid {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: 20px;
+}
+
+.section {
+    background: #151821;
+    border: 1px solid #242936;
+    border-radius: 14px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 18px;
+}
+
+.section h2 {
+    font-size: 19px;
+}
+
+.small {
+    color: #9ca3af;
+    font-size: 13px;
+}
+
+/* DAY SELECTOR */
+
+.days {
+    display: flex;
+    gap: 7px;
+    overflow-x: auto;
+    padding-bottom: 10px;
+}
+
+.day {
+    min-width: 45px;
+    height: 45px;
+    background: #222733;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-weight: 700;
+}
+
+.day.active {
+    background: #22c55e;
+    color: #06120a;
+}
+
+.day.complete {
+    border: 2px solid #22c55e;
+}
+
+/* TASK */
+
+.task {
+    background: #202530;
+    border-radius: 10px;
+    padding: 14px;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.task input {
+    width: 19px;
+    height: 19px;
+}
+
+.task-content {
+    flex: 1;
+}
+
+.task-name {
+    font-weight: 700;
+}
+
+.task-meta {
+    font-size: 12px;
+    color: #9ca3af;
+    margin-top: 4px;
+}
+
+.task.completed .task-name {
+    text-decoration: line-through;
+    color: #6b7280;
+}
+
+.task-actions {
+    display: flex;
+    gap: 5px;
+}
+
+.edit-btn {
+    background: #374151;
+    color: white;
+}
+
+.delete-btn {
+    background: #451a1a;
+    color: #fca5a5;
+}
+
+/* ADD TASK */
+
+.add-task {
+    display: grid;
+    grid-template-columns: 1fr 130px 90px;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+input, select {
+    background: #202530;
+    color: white;
+    border: 1px solid #343b49;
+    border-radius: 8px;
+    padding: 11px;
+}
+
+.add-btn {
+    background: #22c55e;
+    color: #06120a;
+}
+
+/* SCORE */
+
+.score {
+    font-size: 55px;
+    font-weight: 900;
+    text-align: center;
+    margin: 15px 0;
+}
+
+.score-label {
+    text-align: center;
+    color: #9ca3af;
+}
+
+.score-circle {
+    margin: auto;
+}
+
+/* REVENUE */
+
+.revenue-input {
+    display: flex;
+    gap: 8px;
+    margin-top: 15px;
+}
+
+.revenue-input input {
+    flex: 1;
+}
+
+.revenue-input button {
+    background: #22c55e;
+}
+
+/* PLAN */
+
+.plan-item {
+    padding: 12px;
+    border-bottom: 1px solid #292e39;
+}
+
+.plan-item:last-child {
+    border-bottom: none;
+}
+
+.plan-day {
+    color: #22c55e;
+    font-weight: 800;
+    font-size: 12px;
+}
+
+.plan-title {
+    margin-top: 4px;
+    font-weight: 700;
+}
+
+/* ALERT */
+
+.alert {
+    padding: 14px;
+    border-radius: 10px;
+    margin-top: 15px;
+    font-weight: 700;
+}
+
+.on-track {
+    background: #052e16;
+    color: #86efac;
+}
+
+.off-track {
+    background: #450a0a;
+    color: #fca5a5;
+}
+
+.neutral {
+    background: #422006;
+    color: #fde68a;
+}
+
+/* MOBILE */
+
+@media(max-width: 850px) {
+
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .main-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .add-task {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media(max-width: 500px) {
+
+    .container {
+        padding: 15px;
+    }
+
+    .grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .big-number {
+        font-size: 22px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header>
+
+<div>
+<div class="logo">₹5L <span>LAUNCH COMMAND</span></div>
+<div class="mission">
+20-Day Digital Product Revenue Mission
+</div>
+</div>
+
+<button onclick="resetData()" style="background:#374151;color:white;">
+Reset
+</button>
+
+</header>
+
+
+<!-- TOP METRICS -->
+
+<div class="grid">
+
+<div class="card">
+
+<div class="card-title">
+REVENUE COLLECTED
+</div>
+
+<div class="big-number green" id="revenueDisplay">
+₹0
+</div>
+
+<div class="progress">
+<div class="progress-bar" id="revenueProgress"></div>
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+TARGET
+</div>
+
+<div class="big-number">
+₹5,00,000
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+DAYS
+</div>
+
+<div class="big-number" id="daysDisplay">
+1 / 20
+</div>
+
+</div>
+
+
+<div class="card">
+
+<div class="card-title">
+OVERALL WORK SCORE
+</div>
+
+<div class="big-number yellow" id="overallScore">
+0
+</div>
+
+</div>
+
+</div>
+
+
+<div class="main-grid">
+
+<!-- LEFT -->
+
+<div>
+
+<div class="section">
+
+<div class="section-header">
+
+<div>
+<h2>20-Day Mission</h2>
+<div class="small">
+Select a day to see your exact mission
+</div>
+</div>
+
+</div>
+
+<div class="days" id="days"></div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-header">
+
+<div>
+<h2 id="dayTitle">
+Day 1
+</h2>
+
+<div class="small" id="dayObjective">
+Build the foundation
+</div>
+
+</div>
+
+<div>
+<span id="completionText">0%</span>
+</div>
+
+</div>
+
+
+<div id="tasks"></div>
+
+
+<div class="add-task">
+
+<input
+id="taskInput"
+placeholder="Add a task..."
+>
+
+<select id="categoryInput">
+
+<option value="Sales">Sales</option>
+<option value="Content">Content</option>
+<option value="Product">Product</option>
+<option value="Audience">Audience</option>
+<option value="Outreach">Outreach</option>
+<option value="Launch">Launch</option>
+<option value="Analytics">Analytics</option>
+
+</select>
+
+<input
+id="pointsInput"
+type="number"
+value="10"
+min="1"
+max="30"
+placeholder="Points"
+>
+
+</div>
+
+<button
+class="add-btn"
+style="margin-top:8px;width:100%;"
+onclick="addTask()"
+>
++ Add Task
+</button>
+
+</div>
+
+</div>
+
+
+<!-- RIGHT -->
+
+<div>
+
+<div class="section">
+
+<h2>Today's Work Score</h2>
+
+<div class="score" id="dayScore">
+0
+</div>
+
+<div class="score-label">
+/ 100 points
+</div>
+
+<div id="scoreMessage" class="alert neutral">
+Start executing.
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Revenue Update</h2>
+
+<div class="small" style="margin-top:5px;">
+Enter money actually collected — not expected sales.
+</div>
+
+<div class="revenue-input">
+
+<input
+id="revenueInput"
+type="number"
+placeholder="₹ amount"
+>
+
+<button onclick="addRevenue()">
+Add
+</button>
+
+</div>
+
+</div>
+
+
+<div class="section">
+
+<h2>Mission Status</h2>
+
+<div id="statusBox" class="alert neutral">
+Calculating...
+</div>
+
+</div>
+
+
+<div class="section">
+
+<div class="section-header">
+
+<h2>Default 20-Day Strategy</h2>
+
+</div>
+
+<div id="plan"></div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<script>
+
+/* ==============================
+   DATA
+================================ */
+
+const TARGET = 500000;
+const TOTAL_DAYS = 20;
+
+let data = JSON.parse(
+    localStorage.getItem("launchCommand")
+) || {
+
+    revenue: 0,
+
+    currentDay: 1,
+
+    tasks: {},
+
+    scores: {}
+
+};
+
+
+/* ==============================
+   DEFAULT TASKS
+================================ */
+
+const defaultTasks = {
+
+1: [
+["Define exact product promise", "Product", 10],
+["Define target customer", "Audience", 10],
+["Decide product price", "Product", 10],
+["Create sales page structure", "Product", 10],
+["Create Instagram/Twitter account positioning", "Audience", 8]
+],
+
+2: [
+["Finish product", "Product", 15],
+["Create checkout/payment system", "Product", 15],
+["Create product landing page", "Product", 12],
+["Create refund/FAQ section", "Product", 5]
+],
+
+3: [
+["Create 5 educational posts", "Content", 10],
+["Create 3 short videos", "Content", 10],
+["Create product explanation post", "Content", 8],
+["Publish first content", "Content", 8]
+],
+
+4: [
+["Talk to 20 potential customers", "Outreach", 15],
+["Ask what they struggle with", "Audience", 10],
+["Collect objections", "Sales", 10],
+["Improve offer based on conversations", "Product", 10]
+],
+
+5: [
+["Publish 2 educational posts", "Content", 8],
+["DM 30 relevant people", "Outreach", 15],
+["Follow up with previous conversations", "Sales", 15],
+["Make first sales", "Sales", 15]
+],
+
+6: [
+["Create proof/testimonial system", "Sales", 10],
+["Contact 30 prospects", "Outreach", 15],
+["Publish risk/reward educational content", "Content", 8],
+["Follow up", "Sales", 15]
+],
+
+7: [
+["Review sales numbers", "Analytics", 10],
+["Identify best-performing content", "Analytics", 8],
+["Identify strongest buyer objection", "Analytics", 8],
+["Contact 40 prospects", "Outreach", 20]
+],
+
+8: [
+["Launch limited-time offer", "Sales", 15],
+["Create urgency content", "Content", 10],
+["Contact 50 prospects", "Outreach", 20],
+["Follow up with every warm lead", "Sales", 15]
+],
+
+9: [
+["Publish customer/problem story", "Content", 8],
+["Contact 50 prospects", "Outreach", 20],
+["Follow up", "Sales", 15],
+["Ask buyers for referral", "Sales", 10]
+],
+
+10: [
+["MIDPOINT REVIEW", "Analytics", 15],
+["Calculate conversion rate", "Analytics", 10],
+["Remove activities producing no results", "Analytics", 10],
+["Double down on best channel", "Sales", 15]
+],
+
+11: [
+["Create stronger offer", "Product", 10],
+["Publish comparison content", "Content", 8],
+["Contact 50 prospects", "Outreach", 20],
+["Follow up", "Sales", 15]
+],
+
+12: [
+["Create FAQ content", "Content", 8],
+["Contact 60 prospects", "Outreach", 20],
+["Follow up with warm leads", "Sales", 15],
+["Ask for referrals", "Sales", 10]
+],
+
+13: [
+["Create social proof post", "Content", 8],
+["Contact 60 prospects", "Outreach", 20],
+["Run direct sales conversations", "Sales", 20],
+["Follow up", "Sales", 15]
+],
+
+14: [
+["Review revenue gap", "Analytics", 10],
+["Calculate required daily sales", "Analytics", 10],
+["Contact high-intent prospects", "Sales", 20],
+["Create urgency offer", "Sales", 15]
+],
+
+15: [
+["Create strongest sales post", "Content", 10],
+["Contact 70 prospects", "Outreach", 20],
+["Follow up", "Sales", 20],
+["Ask existing customers for referrals", "Sales", 10]
+],
+
+16: [
+["Publish product transformation story", "Content", 10],
+["Contact 70 prospects", "Outreach", 20],
+["Follow up", "Sales", 20],
+["Close warm leads", "Sales", 20]
+],
+
+17: [
+["Launch final promotional phase", "Launch", 15],
+["Contact 80 prospects", "Outreach", 20],
+["Follow up", "Sales", 20],
+["Publish urgency content", "Content", 10]
+],
+
+18: [
+["Contact every warm lead", "Sales", 20],
+["Create final offer", "Sales", 15],
+["Publish final educational content", "Content", 10],
+["Ask for referrals", "Sales", 10]
+],
+
+19: [
+["FINAL 48-HOUR PUSH", "Launch", 20],
+["Contact 100 prospects", "Outreach", 25],
+["Follow up", "Sales", 20],
+["Close pending buyers", "Sales", 20]
+],
+
+20: [
+["FINAL SALES PUSH", "Sales", 25],
+["Contact every remaining lead", "Outreach", 25],
+["Close pending conversations", "Sales", 25],
+["Calculate final results", "Analytics", 10]
+]
+
+};
+
+
+/* ==============================
+   DAY OBJECTIVES
+================================ */
+
+const objectives = {
+
+1:"Build the foundation",
+
+2:"Finish the actual product",
+
+3:"Start building attention",
+
+4:"Talk to real customers",
+
+5:"Get first sales",
+
+6:"Build proof",
+
+7:"Measure what is working",
+
+8:"Start aggressive selling",
+
+9:"Increase conversations",
+
+10:"Midpoint reality check",
+
+11:"Improve the offer",
+
+12:"Increase outreach",
+
+13:"Turn attention into sales",
+
+14:"Attack the revenue gap",
+
+15:"Increase volume",
+
+16:"Close warm leads",
+
+17:"Final promotional phase",
+
+18:"Final sales push",
+
+19:"48-hour attack",
+
+20:"Close the mission"
+
+};
+
+
+/* ==============================
+   INITIALIZE
+================================ */
+
+function initializeTasks(){
+
+    for(let day=1; day<=20; day++){
+
+        if(!data.tasks[day]){
+
+            data.tasks[day] =
+                defaultTasks[day].map((t,i)=>({
+
+                    id: Date.now() + day + i,
+
+                    name:t[0],
+
+                    category:t[1],
+
+                    points:t[2],
+
+                    completed:false
+
+                }));
+
+        }
+
+    }
+
+    save();
+
+}
+
+
+/* ==============================
+   SAVE
+================================ */
+
+function save(){
+
+    localStorage.setItem(
+        "launchCommand",
+        JSON.stringify(data)
+    );
+
+}
+
+
+/* ==============================
+   DAYS
+================================ */
+
+function renderDays(){
+
+    const container =
+        document.getElementById("days");
+
+    container.innerHTML="";
+
+    for(let i=1;i<=20;i++){
+
+        const div =
+            document.createElement("div");
+
+        div.className="day";
+
+        if(i===data.currentDay)
+            div.classList.add("active");
+
+        const tasks =
+            data.tasks[i] || [];
+
+        if(
+            tasks.length &&
+            tasks.every(t=>t.completed)
+        )
+            div.classList.add("complete");
+
+        div.innerText=i;
+
+        div.onclick=()=>{
+
+            data.currentDay=i;
+
+            save();
+
+            render();
+
+        };
+
+        container.appendChild(div);
+
+    }
+
+}
+
+
+/* ==============================
+   TASKS
+================================ */
+
+function renderTasks(){
+
+    const day =
+        data.currentDay;
+
+    const tasks =
+        data.tasks[day] || [];
+
+    const container =
+        document.getElementById("tasks");
+
+    container.innerHTML="";
+
+    tasks.forEach(task=>{
+
+        const div =
+            document.createElement("div");
+
+        div.className =
+            "task" +
+            (task.completed ? " completed":"");
+
+        div.innerHTML=`
+
+            <input
+                type="checkbox"
+                ${task.completed ? "checked":""}
+                onchange="toggleTask(${task.id})"
+            >
+
+            <div class="task-content">
+
+                <div class="task-name">
+                    ${escapeHTML(task.name)}
+                </div>
+
+                <div class="task-meta">
+                    ${escapeHTML(task.category)}
+                    • ${task.points} points
+                </div>
+
+            </div>
+
+            <div class="task-actions">
+
+                <button
+                    class="edit-btn"
+                    onclick="editTask(${task.id})"
+                >
+                    Edit
+                </button>
+
+                <button
+                    class="delete-btn"
+                    onclick="deleteTask(${task.id})"
+                >
+                    ×
+                </button>
+
+            </div>
+
+        `;
+
+        container.appendChild(div);
+
+    });
+
+    calculateDayScore();
+
+}
+
+
+/* ==============================
+   TOGGLE
+================================ */
+
+function toggleTask(id){
+
+    const tasks =
+        data.tasks[data.currentDay];
+
+    const task =
+        tasks.find(t=>t.id===id);
+
+    if(task)
+        task.completed =
+            !task.completed;
+
+    save();
+
+    render();
+
+}
+
+
+/* ==============================
+   ADD
+================================ */
+
+function addTask(){
+
+    const input =
+        document.getElementById("taskInput");
+
+    const category =
+        document.getElementById("categoryInput");
+
+    const points =
+        document.getElementById("pointsInput");
+
+    const name =
+        input.value.trim();
+
+    if(!name){
+
+        alert("Write a task first.");
+
+        return;
+
+    }
+
+    data.tasks[data.currentDay].push({
+
+        id:Date.now(),
+
+        name:name,
+
+        category:category.value,
+
+        points:Number(points.value)||10,
+
+        completed:false
+
+    });
+
+    input.value="";
+
+    save();
+
+    render();
+
+}
+
+
+/* ==============================
+   EDIT
+================================ */
+
+function editTask(id){
+
+    const tasks =
+        data.tasks[data.currentDay];
+
+    const task =
+        tasks.find(t=>t.id===id);
+
+    if(!task) return;
+
+    const newName =
+        prompt(
+            "Edit task:",
+            task.name
+        );
+
+    if(newName === null)
+        return;
+
+    if(newName.trim())
+        task.name=newName.trim();
+
+    save();
+
+    render();
+
+}
+
+
+/* ==============================
+   DELETE
+================================ */
+
+function deleteTask(id){
+
+    data.tasks[data.currentDay] =
+        data.tasks[data.currentDay]
+        .filter(t=>t.id!==id);
+
+    save();
+
+    render();
+
+}
+
+
+/* ==============================
+   SCORE
+================================ */
+
+function calculateDayScore(){
+
+    const tasks =
+        data.tasks[data.currentDay];
+
+    let earned=0;
+    let possible=0;
+
+    tasks.forEach(task=>{
+
+        possible += task.points;
+
+        if(task.completed)
+            earned += task.points;
+
+    });
+
+    let score =
+        possible ?
+        Math.round(
+            earned / possible * 100
+        ) : 0;
+
+    document.getElementById(
+        "dayScore"
+    ).innerText=score;
+
+    document.getElementById(
+        "completionText"
+    ).innerText=score+"%";
+
+    let message =
+        document.getElementById(
+            "scoreMessage"
+        );
+
+    if(score>=80){
+
+        message.className=
+            "alert on-track";
+
+        message.innerText=
+            "Excellent. You are actually executing.";
+
+    }
+    else if(score>=50){
+
+        message.className=
+            "alert neutral";
+
+        message.innerText=
+            "Decent, but increase execution.";
+
+    }
+    else{
+
+        message.className=
+            "alert off-track";
+
+        message.innerText=
+            "You are behind. Stop planning and execute.";
+
+    }
+
+}
+
+
+/* ==============================
+   OVERALL SCORE
+================================ */
+
+function calculateOverallScore(){
+
+    let total=0;
+    let earned=0;
+
+    for(let day=1;day<=20;day++){
+
+        const tasks =
+            data.tasks[day] || [];
+
+        tasks.forEach(task=>{
+
+            total += task.points;
+
+            if(task.completed)
+                earned += task.points;
+
+        });
+
+    }
+
+    const score =
+        total ?
+        Math.round(
+            earned / total * 100
+        ) : 0;
+
+    document.getElementById(
+        "overallScore"
+    ).innerText=score;
+
+}
+
+
+/* ==============================
+   REVENUE
+================================ */
+
+function addRevenue(){
+
+    const input =
+        document.getElementById(
+            "revenueInput"
+        );
+
+    const amount =
+        Number(input.value);
+
+    if(!amount || amount<=0){
+
+        alert("Enter valid revenue.");
+
+        return;
+
+    }
+
+    data.revenue += amount;
+
+    input.value="";
+
+    save();
+
+    render();
+
+}
+
+
+/* ==============================
+   REVENUE STATUS
+================================ */
+
+function renderRevenue(){
+
+    const percentage =
+        Math.min(
+            data.revenue / TARGET * 100,
+            100
+        );
+
+    document.getElementById(
+        "revenueDisplay"
+    ).innerText =
+        "₹"+data.revenue.toLocaleString("en-IN");
+
+    document.getElementById(
+        "revenueProgress"
+    ).style.width =
+        percentage+"%";
+
+}
+
+
+/* ==============================
+   STATUS
+================================ */
+
+function renderStatus(){
+
+    const day =
+        data.currentDay;
+
+    const expected =
+        TARGET / TOTAL_DAYS * day;
+
+    const box =
+        document.getElementById(
+            "statusBox"
+        );
+
+    if(data.revenue >= expected){
+
+        box.className =
+            "alert on-track";
+
+        box.innerText =
+            "ON TRACK — You are above the required revenue pace.";
+
+    }
+    else{
+
+        const gap =
+            expected-data.revenue;
+
+        box.className =
+            "alert off-track";
+
+        box.innerText =
+            "BEHIND — You are ₹"+
+            gap.toLocaleString("en-IN")+
+            " behind the expected pace.";
+
+    }
+
+}
+
+
+/* ==============================
+   PLAN
+================================ */
+
+function renderPlan(){
+
+    const container =
+        document.getElementById("plan");
+
+    container.innerHTML="";
+
+    for(let i=1;i<=20;i++){
+
+        const div =
+            document.createElement("div");
+
+        div.className="plan-item";
+
+        div.innerHTML=`
+
+            <div class="plan-day">
+                DAY ${i}
+            </div>
+
+            <div class="plan-title">
+                ${objectives[i]}
+            </div>
+
+        `;
+
+        container.appendChild(div);
+
+    }
+
+}
+
+
+/* ==============================
+   RENDER
+================================ */
+
+function render(){
+
+    document.getElementById(
+        "dayTitle"
+    ).innerText =
+        "Day "+data.currentDay;
+
+    document.getElementById(
+        "dayObjective"
+    ).innerText =
+        objectives[data.currentDay];
+
+    document.getElementById(
+        "daysDisplay"
+    ).innerText =
+        data.currentDay+" / 20";
+
+    renderDays();
+
+    renderTasks();
+
+    renderRevenue();
+
+    calculateOverallScore();
+
+    renderStatus();
+
+    renderPlan();
+
+}
+
+
+/* ==============================
+   RESET
+================================ */
+
+function resetData(){
+
+    const yes =
+        confirm(
+            "Delete all your progress?"
+        );
+
+    if(!yes) return;
+
+    localStorage.removeItem(
+        "launchCommand"
+    );
+
+    location.reload();
+
+}
+
+
+/* ==============================
+   SECURITY
+================================ */
+
+function escapeHTML(str){
+
+    return str
+        .replace(/&/g,"&amp;")
+        .replace(/</g,"&lt;")
+        .replace(/>/g,"&gt;")
+        .replace(/"/g,"&quot;")
+        .replace(/'/g,"&#039;");
+
+}
+
+
+/* START */
+
+initializeTasks();
+
+render();
+
+</script>
+
+</body>
+</html>
